@@ -5,39 +5,35 @@ import Taskbar from "./Taskbar/Taskbar";
 import Desktop from "./Desktop/Desktop";
 import app_list from "../Apps/app_list.json";
 
-const context = createContext<{
-	entities: {
-		[key: number]: {
-			app_list_index: number;
-			minimized: boolean;
-			component: ReactNode;
-			z_index: number;
-		};
+type EntityMap = {
+	[key: number]: {
+		app_list_index: number;
+		minimized: boolean;
+		component: ReactNode;
+		z_index: number;
 	};
+};
+
+const context = createContext<{
+	entities: EntityMap;
 	loadComponent: (index_in_app_list: number) => void;
 	destroyEntity: (key: number) => void;
 	pushEntityForward: (key: number) => void;
-	minimizeEntity: (key: number) => void;
+	minimizeEntitySwitch: (key: number, minimize: boolean) => void;
 }>({
 	entities: {},
 	loadComponent: (_index_in_app_list: number) => {},
 	destroyEntity: (_key: number) => {},
 	pushEntityForward: (_key: number) => {},
-	minimizeEntity: (_key: number) => {},
+	minimizeEntitySwitch: (_key: number, _minimize: boolean) => {},
 });
+
 export const useWindowManager = () => useContext(context);
 
 export default function WindowManager() {
 	const [window_counter, set_window_counter] = useState(0);
 
-	const [entities, setEntities] = useState<{
-		[key: number]: {
-			app_list_index: number;
-			minimized: boolean;
-			component: ReactNode;
-			z_index: number;
-		};
-	}>({});
+	const [entities, setEntities] = useState<EntityMap>({});
 
 	async function loadComponent(app_list_index: number) {
 		if (app_list_index >= app_list.length) return;
@@ -46,6 +42,7 @@ export default function WindowManager() {
 		if (path_from_app_list) {
 			try {
 				const { default: LoadedComponent } = await import(
+					/* @vite-ignore */
 					"../Apps/" + path_from_app_list
 				);
 				addEntity(LoadedComponent(), app_list_index);
@@ -87,10 +84,10 @@ export default function WindowManager() {
 		set_window_counter((prev) => prev + 1);
 	}
 
-	function minimizeEntity(key: number) {
+	function minimizeEntitySwitch(key: number, minimize: boolean) {
 		setEntities((prevEntities) => {
 			const newEntities = { ...prevEntities };
-			newEntities[key].minimized = true;
+			newEntities[key].minimized = minimize;
 			return { ...newEntities };
 		});
 	}
@@ -102,7 +99,7 @@ export default function WindowManager() {
 				loadComponent,
 				destroyEntity,
 				pushEntityForward,
-				minimizeEntity,
+				minimizeEntitySwitch,
 			}}
 		>
 			<div>
@@ -113,7 +110,7 @@ export default function WindowManager() {
 						height: `calc(100vh - ${TASKBAR_HEIGHT}px)`,
 						top: 0,
 						left: 0,
-						border: "solid green",
+						// border: "solid green",
 						overflow: "hidden",
 					}}
 				>

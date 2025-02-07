@@ -1,19 +1,14 @@
 import app_list from "../../Apps/app_list.json";
+import extract_icon_url from "../utils/extract_icon_url";
 import { useWindowManager } from "../WindowManager";
 
 export default function Desktop() {
 	const { loadComponent } = useWindowManager();
 
-	function extract_icon(i: number) {
-		const icon = app_list[i].icon;
-		if (icon.external_source)
-			return <img src={icon.external_source} width={50} height={50} alt="" />;
-	}
-
 	return (
 		<div
 			style={{
-				border: "black solid 2px",
+				// border: "black solid 2px",
 				width: "100%",
 				height: "100%",
 				padding: 0,
@@ -42,7 +37,7 @@ export default function Desktop() {
 						onDoubleClick={() => loadComponent(i)}
 						key={i}
 					>
-						{extract_icon(i)}
+						<img src={extract_icon_url(i)} width={50} height={50} alt="" />
 						<p
 							style={{
 								maxWidth: 70,

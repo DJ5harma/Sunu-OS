@@ -15,18 +15,10 @@ export default function Window({
 	myKey: number;
 	z_index: number;
 }) {
-	const { destroyEntity, pushEntityForward, minimizeEntity } =
+	const { destroyEntity, pushEntityForward, minimizeEntitySwitch } =
 		useWindowManager();
 
 	const [in_fullscreen, set_in_fullscreen] = useState(false);
-
-	// const [before_fullscreen, set_before_fullscreen] = useState({
-	// 	pos: { x: window.innerWidth / 4, y: window.innerHeight / 4 },
-	// 	dimensions: {
-	// 		width: window.innerWidth / 2,
-	// 		height: window.innerHeight / 2,
-	// 	},
-	// });
 
 	const Rnd_Ref = useRef<Rnd>(null);
 
@@ -74,7 +66,6 @@ export default function Window({
 			<nav
 				style={{
 					background: "black",
-					color: "#gray",
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "center",
@@ -100,7 +91,7 @@ export default function Window({
 					<VscChromeMinimize
 						size={20}
 						style={{ cursor: "pointer" }}
-						onClick={() => minimizeEntity(myKey)}
+						onClick={() => minimizeEntitySwitch(myKey, true)}
 					/>
 					<FiMaximize2
 						onClick={toggleFullscreen}
