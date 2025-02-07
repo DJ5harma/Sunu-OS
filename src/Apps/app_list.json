@@ -1,0 +1,6 @@
+[
+    {
+        "name": "TestApplication",
+        "main": "./TestApplication/main.tsx"
+    }
+]
