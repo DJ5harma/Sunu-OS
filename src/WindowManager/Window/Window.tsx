@@ -3,16 +3,25 @@ import { FiMaximize2 } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { VscChromeMinimize } from "react-icons/vsc";
 import { Rnd } from "react-rnd";
-import { useWindowManager } from "../WindowManager";
-import { TASKBAR_HEIGHT, WINDOW_TOPBAR_HEIGHT } from "../constants";
+import { Entity, useWindowManager } from "../WindowManager";
+import {
+	TASKBAR_HEIGHT,
+	WINDOW_TOPBAR_BUTTONS_WIDTH,
+	WINDOW_TOPBAR_HEIGHT,
+} from "../constants";
+import extract_icon_url from "../utils/extract_icon_url";
+
+import "./Window.css";
 
 export default function Window({
 	children,
 	myKey,
+	myEntity,
 	z_index,
 }: {
 	children: ReactNode;
 	myKey: number;
+	myEntity: Entity;
 	z_index: number;
 }) {
 	const { destroyEntity, pushEntityForward, minimizeEntitySwitch } =
@@ -55,13 +64,16 @@ export default function Window({
 			}}
 			dragHandleClassName="drag-handler"
 			style={{
-				border: in_fullscreen ? "1px yellow solid" : "1px red solid",
+				// border: in_fullscreen
+				// 	? "1px yellow solid"
+				// 	: "rgb(255, 255, 255) solid 1px",
+				boxShadow: "0 0 3px 0.5px white",
 				zIndex: z_index,
+				borderRadius: 10,
 			}}
 			onMouseDown={() => pushEntityForward(myKey)}
-			disableDragging={in_fullscreen}
+			// disableDragging={in_fullscreen}
 			onResize={() => set_in_fullscreen(false)}
-			bounds={"parent"}
 		>
 			<nav
 				style={{
@@ -71,7 +83,6 @@ export default function Window({
 					alignItems: "center",
 					userSelect: "none",
 					height: WINDOW_TOPBAR_HEIGHT,
-					padding: "0 15px 0 0",
 				}}
 			>
 				<div
@@ -81,28 +92,70 @@ export default function Window({
 						height: "100%",
 						display: "flex",
 						alignItems: "center",
-						paddingLeft: 15,
+						gap: 6,
 					}}
 					onDoubleClick={toggleFullscreen}
 				>
+					<img
+						src={extract_icon_url(myEntity.app_list_index)}
+						alt=""
+						style={{
+							height: WINDOW_TOPBAR_HEIGHT - 4,
+							padding: 4,
+						}}
+					/>
 					<p>Component Name</p>
 				</div>
-				<div style={{ display: "flex", gap: 15, alignItems: "center" }}>
-					<VscChromeMinimize
-						size={20}
-						style={{ cursor: "pointer" }}
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						height: "100%",
+					}}
+				>
+					<div
+						className="MinimizeButton"
+						style={{
+							height: "100%",
+							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							cursor: "pointer",
+						}}
 						onClick={() => minimizeEntitySwitch(myKey, true)}
-					/>
-					<FiMaximize2
-						onClick={toggleFullscreen}
-						size={20}
-						style={{ cursor: "pointer" }}
-					/>
-					<RxCross2
-						size={20}
-						style={{ cursor: "pointer" }}
+					>
+						<VscChromeMinimize size={20} />
+					</div>
+					<div
+						className="FullscreenButton"
+						style={{
+							height: "100%",
+							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							cursor: "pointer",
+						}}
+						onClick={() => toggleFullscreen()}
+					>
+						<FiMaximize2 size={20} />
+					</div>
+					<div
+						className="CrossButton"
+						style={{
+							height: "100%",
+							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							cursor: "pointer",
+							// backgroundColor: "green",
+						}}
 						onClick={() => destroyEntity(myKey)}
-					/>
+					>
+						<RxCross2 size={20} />
+					</div>
 				</div>
 			</nav>
 			<div style={{ height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)` }}>

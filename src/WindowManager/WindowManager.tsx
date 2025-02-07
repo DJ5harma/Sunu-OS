@@ -13,6 +13,12 @@ type EntityMap = {
 		z_index: number;
 	};
 };
+export type Entity = {
+	app_list_index: number;
+	minimized: boolean;
+	component: ReactNode;
+	z_index: number;
+};
 
 const context = createContext<{
 	entities: EntityMap;
@@ -115,13 +121,15 @@ export default function WindowManager() {
 					}}
 				>
 					<Desktop />
-					{/* <button onClick={() => addEntity(<div>Hello {window_counter}</div>)}>
-						Click
-					</button> */}
 					{Object.entries(entities).map(([key, value]) => {
 						if (value.minimized) return null;
 						return (
-							<Window key={key} myKey={Number(key)} z_index={value.z_index}>
+							<Window
+								key={key}
+								myKey={Number(key)}
+								myEntity={value}
+								z_index={value.z_index}
+							>
 								{value.component}
 							</Window>
 						);

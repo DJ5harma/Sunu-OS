@@ -33,18 +33,20 @@ export default function Taskbar() {
 					"linear-gradient(to up, rgb(36, 29, 35), rgb(109, 109, 109))",
 			}}
 		>
-			{renderable.map(([_key, value], i) => {
+			{renderable.map(([key, value], i) => {
 				return (
 					<div
+						key={key}
 						style={{
 							display: "flex",
 							flexDirection: "column",
 							alignItems: "center",
 							justifyContent: "center",
 							position: "relative",
-							top: 6,
+							top: 2,
 							backgroundColor: i === max_z_index_index ? "black" : "gray",
-							padding: 4,
+							padding: "4px 6px",
+							borderRadius: 10,
 						}}
 						onClick={() => handleClick(i)}
 					>
@@ -53,8 +55,9 @@ export default function Taskbar() {
 							width={35}
 							height={35}
 							alt=""
+							style={{ position: "relative", top: 3 }}
 						/>
-						<MdLinearScale style={{ position: "relative", bottom: 3 }} />
+						<MdLinearScale style={{ position: "relative", bottom: 1 }} />
 					</div>
 				);
 			})}

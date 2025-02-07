@@ -1,0 +1,9 @@
+.CrossButton:hover {
+	background-color: rgb(232, 17, 35);
+}
+.FullscreenButton:hover {
+	background-color: rgb(41, 41, 44);
+}
+.MinimizeButton:hover {
+	background-color: rgb(41, 41, 44);
+}
