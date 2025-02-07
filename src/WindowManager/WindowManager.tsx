@@ -34,7 +34,7 @@ const context = createContext<{
 	minimizeEntitySwitch: (_key: number, _minimize: boolean) => {},
 });
 
-export const useWindowManager = () => useContext(context);
+export const UseWindowManager = () => useContext(context);
 
 export default function WindowManager() {
 	const [window_counter, set_window_counter] = useState(0);
@@ -51,7 +51,7 @@ export default function WindowManager() {
 					/* @vite-ignore */
 					"../Apps/" + path_from_app_list
 				);
-				addEntity(LoadedComponent(), app_list_index);
+				addEntity(<LoadedComponent />, app_list_index);
 			} catch (error) {
 				console.error("Error loading component:", error);
 			}
@@ -108,10 +108,14 @@ export default function WindowManager() {
 				minimizeEntitySwitch,
 			}}
 		>
-			<div>
+			<div
+				style={{
+					color: "white",
+					backgroundColor: "#242424",
+				}}
+			>
 				<div
 					style={{
-						position: "relative",
 						width: `100vw`,
 						height: `calc(100vh - ${TASKBAR_HEIGHT}px)`,
 						top: 0,

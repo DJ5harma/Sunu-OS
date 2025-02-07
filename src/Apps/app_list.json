@@ -8,19 +8,19 @@
         }
     },
     {
-        "name": "TestApplication",
-        "main": "./TestApplication/main.tsx",
+        "name": "Calculator",
+        "main": "./Calculator/Calculator.tsx",
         "icon": {
             "local_path": "",
-            "external_source": "https://www.freeiconspng.com/uploads/apps-android-icon-png-10.png"
+            "external_source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxKYKV3UjYv5LLme-c9IxgHs7bS5f8TcqrQ&s"
         }
     },
     {
-        "name": "TestApplication",
-        "main": "./TestApplication/main.tsx",
+        "name": "Web Games",
+        "main": "./WebGames/src/main.tsx",
         "icon": {
             "local_path": "",
-            "external_source": "https://www.freeiconspng.com/uploads/apps-android-icon-png-10.png"
+            "external_source": "https://png.pngtree.com/png-clipart/20230216/ourmid/pngtree-blue-joystick-for-gaming-png-image_6603316.png"
         }
     }
 ]

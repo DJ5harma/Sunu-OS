@@ -1,0 +1,31 @@
+@keyframes buttonAnimation {
+	50% {
+		border-radius: 5px;
+		padding: 12px;
+	}
+}
+
+#Home {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	/* gap: 20px; */
+	overflow-x: hidden;
+
+	h1 {
+		font-size: 30;
+		background-color: rgb(9, 9, 9);
+		padding: 20px;
+		width: 100%;
+		text-align: center;
+		font-weight: lighter;
+	}
+
+	button {
+		border: none;
+		animation: buttonAnimation 2s forwards infinite;
+	}
+}

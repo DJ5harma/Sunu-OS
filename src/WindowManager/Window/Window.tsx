@@ -3,7 +3,7 @@ import { FiMaximize2 } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import { VscChromeMinimize } from "react-icons/vsc";
 import { Rnd } from "react-rnd";
-import { Entity, useWindowManager } from "../WindowManager";
+import { Entity, UseWindowManager } from "../WindowManager";
 import {
 	TASKBAR_HEIGHT,
 	WINDOW_TOPBAR_BUTTONS_WIDTH,
@@ -12,6 +12,7 @@ import {
 import extract_icon_url from "../utils/extract_icon_url";
 
 import "./Window.css";
+import app_list from "../../Apps/app_list.json";
 
 export default function Window({
 	children,
@@ -25,7 +26,7 @@ export default function Window({
 	z_index: number;
 }) {
 	const { destroyEntity, pushEntityForward, minimizeEntitySwitch } =
-		useWindowManager();
+		UseWindowManager();
 
 	const [in_fullscreen, set_in_fullscreen] = useState(false);
 
@@ -70,6 +71,10 @@ export default function Window({
 				boxShadow: "0 0 3px 0.5px white",
 				zIndex: z_index,
 				borderRadius: 10,
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "center",
 			}}
 			onMouseDown={() => pushEntityForward(myKey)}
 			// disableDragging={in_fullscreen}
@@ -83,6 +88,7 @@ export default function Window({
 					alignItems: "center",
 					userSelect: "none",
 					height: WINDOW_TOPBAR_HEIGHT,
+					width: "100%",
 				}}
 			>
 				<div
@@ -104,7 +110,7 @@ export default function Window({
 							padding: 4,
 						}}
 					/>
-					<p>Component Name</p>
+					<p>{app_list[myEntity.app_list_index].name}</p>
 				</div>
 				<div
 					style={{
@@ -158,7 +164,17 @@ export default function Window({
 					</div>
 				</div>
 			</nav>
-			<div style={{ height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)` }}>
+			<div
+				style={{
+					height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
+					backgroundColor: "black",
+					color: "white",
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					position: "relative",
+				}}
+			>
 				{children}
 			</div>
 		</Rnd>

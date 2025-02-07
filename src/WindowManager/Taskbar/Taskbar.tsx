@@ -1,11 +1,11 @@
 import { MdLinearScale } from "react-icons/md";
 import { TASKBAR_HEIGHT } from "../constants";
 import extract_icon_url from "../utils/extract_icon_url";
-import { useWindowManager } from "../WindowManager";
+import { UseWindowManager } from "../WindowManager";
 
 export default function Taskbar() {
 	const { entities, minimizeEntitySwitch, pushEntityForward } =
-		useWindowManager();
+		UseWindowManager();
 
 	const renderable = Object.entries(entities);
 
@@ -44,7 +44,7 @@ export default function Taskbar() {
 							justifyContent: "center",
 							position: "relative",
 							top: 2,
-							backgroundColor: i === max_z_index_index ? "black" : "gray",
+							backgroundColor: i === max_z_index_index ? "gray" : "black",
 							padding: "4px 6px",
 							borderRadius: 10,
 						}}

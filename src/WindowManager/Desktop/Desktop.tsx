@@ -1,9 +1,9 @@
 import app_list from "../../Apps/app_list.json";
 import extract_icon_url from "../utils/extract_icon_url";
-import { useWindowManager } from "../WindowManager";
+import { UseWindowManager } from "../WindowManager";
 
 export default function Desktop() {
-	const { loadComponent } = useWindowManager();
+	const { loadComponent } = UseWindowManager();
 
 	return (
 		<div

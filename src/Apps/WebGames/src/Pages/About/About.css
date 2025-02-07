@@ -1,0 +1,16 @@
+#About {
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	h3 {
+		font-size: 30px;
+	}
+	p {
+		font-size: 20px;
+		a {
+			display: block;
+		}
+	}
+}

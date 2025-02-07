@@ -1,0 +1,57 @@
+@keyframes rightToLeft {
+	0% {
+		right: 0;
+	}
+}
+
+@keyframes canvasColorAnimation {
+	0% {
+		background-color: black;
+	}
+	15% {
+		background-color: rgb(40, 0, 0);
+	}
+	30% {
+		background-color: black;
+	}
+	45% {
+		background-color: rgb(0, 40, 0);
+	}
+	60% {
+		background-color: black;
+	}
+	75% {
+		background-color: rgb(0, 0, 40);
+	}
+	100% {
+		background-color: black;
+	}
+}
+.TwoPolesAndSpacing {
+	display: flex;
+	flex-direction: column;
+	right: 200vw;
+
+	position: absolute;
+
+	animation: rightToLeft 15s forwards;
+}
+
+#Ship {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: calc(50vh - 30px);
+	left: 20vw;
+	transform: rotateX(90);
+}
+
+#Canvas {
+	height: "100vh";
+	display: "flex";
+	justify-content: "center";
+	align-items: "center";
+	overflow: "hidden";
+
+	animation: canvasColorAnimation 30s infinite;
+}
