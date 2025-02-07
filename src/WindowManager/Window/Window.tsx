@@ -4,7 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { VscChromeMinimize } from "react-icons/vsc";
 import { Rnd } from "react-rnd";
 import { useWindowManager } from "../WindowManager";
-import { TASKBAR_HEIGHT } from "../constants";
+import { TASKBAR_HEIGHT, WINDOW_TOPBAR_HEIGHT } from "../constants";
 
 export default function Window({
 	children,
@@ -73,13 +73,13 @@ export default function Window({
 		>
 			<nav
 				style={{
-					background: "#333",
+					background: "black",
 					color: "#gray",
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "center",
 					userSelect: "none",
-					height: 50,
+					height: WINDOW_TOPBAR_HEIGHT,
 					padding: "0 15px 0 0",
 				}}
 			>
@@ -114,7 +114,9 @@ export default function Window({
 					/>
 				</div>
 			</nav>
-			{children}
+			<div style={{ height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)` }}>
+				{children}
+			</div>
 		</Rnd>
 	);
 }

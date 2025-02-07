@@ -1,6 +1,26 @@
 [
     {
         "name": "TestApplication",
-        "main": "./TestApplication/main.tsx"
+        "main": "./TestApplication/main.tsx",
+        "icon": {
+            "local_path": "",
+            "external_source": "https://www.freeiconspng.com/uploads/apps-android-icon-png-10.png"
+        }
+    },
+    {
+        "name": "TestApplication",
+        "main": "./TestApplication/main.tsx",
+        "icon": {
+            "local_path": "",
+            "external_source": "https://www.freeiconspng.com/uploads/apps-android-icon-png-10.png"
+        }
+    },
+    {
+        "name": "TestApplication",
+        "main": "./TestApplication/main.tsx",
+        "icon": {
+            "local_path": "",
+            "external_source": "https://www.freeiconspng.com/uploads/apps-android-icon-png-10.png"
+        }
     }
 ]
