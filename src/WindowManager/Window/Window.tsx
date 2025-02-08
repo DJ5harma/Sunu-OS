@@ -89,6 +89,7 @@ export default function Window({
 						<img
 							src={app_list[myEntity.app_list_index].icon}
 							alt=""
+							className="rounded-xl"
 							style={{
 								height: WINDOW_TOPBAR_HEIGHT - 20,
 							}}
@@ -131,7 +132,7 @@ export default function Window({
 					</div>
 				</nav>
 				<div
-					className="w-full h-full [&>*]:w-full [&>*]:h-full"
+					className="w-full h-full [&>*]:w-full [&>*]:h-full [&>*]:bg-white"
 					style={{
 						height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
 					}}
