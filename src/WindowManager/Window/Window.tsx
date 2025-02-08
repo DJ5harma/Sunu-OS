@@ -13,6 +13,7 @@ import {
 import "./Window.css";
 import app_list from "../../app_list.json";
 import Contributor from "../Contributor/Contributor";
+import { MdCloseFullscreen } from "react-icons/md";
 
 export default function Window({
 	children,
@@ -53,6 +54,7 @@ export default function Window({
 
 		set_in_fullscreen(!in_fullscreen);
 	}
+
 	return (
 		<>
 			<Rnd
@@ -66,12 +68,12 @@ export default function Window({
 				dragHandleClassName="drag-handler"
 				className="flex flex-col justify-center items-center"
 				style={{
-					boxShadow: "0 0 3px 0.5px white",
+					// boxShadow: "0 0 3px 0.5px white",
 					zIndex: z_index,
 					borderRadius: in_fullscreen ? 0 : 10,
 				}}
 				onMouseDown={() => pushEntityForward(myKey)}
-				// disableDragging={in_fullscreen}
+				disableDragging={in_fullscreen}
 				onResize={() => set_in_fullscreen(false)}
 			>
 				<nav
@@ -81,15 +83,14 @@ export default function Window({
 					}}
 				>
 					<div
-						className="drag-handler w-full h-full flex items-center gap-1.5"
+						className="drag-handler w-full h-full flex items-center gap-1.5 relative left-2"
 						onDoubleClick={toggleFullscreen}
 					>
 						<img
 							src={app_list[myEntity.app_list_index].icon}
 							alt=""
 							style={{
-								height: WINDOW_TOPBAR_HEIGHT - 4,
-								padding: 4,
+								height: WINDOW_TOPBAR_HEIGHT - 20,
 							}}
 						/>
 						<p>{app_list[myEntity.app_list_index].name}</p>
@@ -112,7 +113,11 @@ export default function Window({
 							}}
 							onClick={toggleFullscreen}
 						>
-							<FiMaximize2 size={20} />
+							{in_fullscreen ? (
+								<MdCloseFullscreen size={20} />
+							) : (
+								<FiMaximize2 size={20} />
+							)}
 						</div>
 						<div
 							className="CrossButton"

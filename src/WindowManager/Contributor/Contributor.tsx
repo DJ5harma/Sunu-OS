@@ -2,6 +2,8 @@ import { useState } from "react";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import app_list from "../../app_list.json";
 import { FiEyeOff } from "react-icons/fi";
+import { WINDOW_TOPBAR_HEIGHT } from "../constants";
+
 export default function Contributor({
 	app_list_index,
 }: {
@@ -14,7 +16,7 @@ export default function Contributor({
 	return (
 		<>
 			<div className="cursor-pointer" onClick={() => setIsHovered((p) => !p)}>
-				<IoMdInformationCircleOutline size={30} />
+				<IoMdInformationCircleOutline size={WINDOW_TOPBAR_HEIGHT - 20} />
 			</div>
 
 			{isHovered && (
@@ -22,11 +24,11 @@ export default function Contributor({
 					<p>
 						by {contributor.good_name} :{" "}
 						<a
-							href={`https://github.com/${contributor.github_username}`}
+							href={"https://" + contributor.url}
 							target="_blank"
 							className="text-blue-400"
 						>
-							{contributor.github_username}
+							{contributor.url}
 						</a>
 					</p>
 					<FiEyeOff

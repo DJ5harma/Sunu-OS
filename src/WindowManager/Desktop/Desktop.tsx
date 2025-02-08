@@ -43,7 +43,7 @@ export default function Desktop() {
 		>
 			{app_list.map(({ name, icon }, i) => {
 				if (name.length > 15) name = name.slice(0, 15) + "...";
-				return <IconWrapper name={name} icon={icon} i={i} />;
+				return <IconWrapper key={i} name={name} icon={icon} i={i} />;
 			})}
 		</div>
 	);
