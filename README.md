@@ -1,12 +1,14 @@
 # Install your own app inside my system:
 
-### If you have your app deployed somewhere
+What you need to do is fork this repo and send a pull request by adding your app init (its very simple).
+
+### case 1: If you have your app deployed somewhere
 
 make sure you haven't made it disallowed for iframe usage
 
 - just add your entry inside the /src/app_list.json file and you're done...
 
-### If you have static html,css,js files
+### case 2: If you have static html,css,js files
 
 To install a static build of html, css and js: (skip this if you made your project using vite, I've made a script for you)
 
@@ -37,7 +39,7 @@ Now you should be having :
 
 (Please check out an already added project inside public to get the analogy if you face problems)
 
-### If you have made your project using vite:
+### case 3: If you have made your project using vite:
 
 I've made a build script to make it easy for you:
 
