@@ -18,10 +18,10 @@ export default function Taskbar() {
 		if (renderable[i][1].z_index > renderable[max_z_index_index][1].z_index)
 			max_z_index_index = i;
 
-	function handleClick(i: number) {
-		if (i === max_z_index_index)
-			minimizeEntitySwitch(i, !entities[i].minimized);
-		else pushEntityForward(i);
+	function handleClick(key: number) {
+		if (key === max_z_index_index)
+			minimizeEntitySwitch(key, !entities[key].minimized);
+		else pushEntityForward(key);
 	}
 
 	return (
@@ -42,7 +42,7 @@ export default function Taskbar() {
 							backgroundColor: i === max_z_index_index ? "gray" : "black",
 							padding: "4px 6px",
 						}}
-						onClick={() => handleClick(i)}
+						onClick={() => handleClick(Number(key))}
 					>
 						<img
 							src={app_list[value.app_list_index].icon}
