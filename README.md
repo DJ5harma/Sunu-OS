@@ -47,7 +47,7 @@ I've made a build script to make it easy for you:
 - Then just run :
 
 ```
-npm run build && #BUILD_FOR_SUNU.cjs [YOUR_PROJECT_NAME]
+npm run build && node #BUILD_FOR_SUNU.cjs [YOUR_PROJECT_NAME]
 ```
 
 This will prepare the dist, then my script will create a new folder named: "#SUNU_OS_dist"
