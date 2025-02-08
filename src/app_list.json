@@ -8,5 +8,10 @@
         "name": "Web Games",
         "iframe": "/WebGames.html",
         "icon": "/WebGames.png"
+    },
+    {
+        "name": "boxOffice",
+        "iframe":"/boxOffice.html",
+        "icon":"https://logowik.com/content/uploads/images/boxoffice-pro3323.jpg"
     }
 ]
