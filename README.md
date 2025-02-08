@@ -7,10 +7,11 @@ To install a static build of html, css and js: (skip this if you made your proje
 3. inside it, place all your assets such as .js file, .css file, audio files etc..
 
 Now you should be having :
-[Project_Name]\_assets folder
-and
-[Project_Name].html
-at the same level
+
+- [Project_Name]\_assets folder
+  and
+- [Project_Name].html
+  at the same level
 
 4. Place these two inside the public directory of Sunu OS (this project)
 
@@ -19,7 +20,7 @@ at the same level
    by replacing them with their current relative paths (inside the [Project_Name]\_assets folder)
 
 - For example, Change
-  `<script> src = "old_path/12345.js"             </script>`
+  `<script> src = "old_path/12345.js"</script>`
   to
   `<script> src="/[Project_Name]_assets/12345.js" </script>`
 
@@ -42,12 +43,13 @@ npm run build && #BUILD_FOR_SUNU.cjs [YOUR_PROJECT_NAME]
 This will prepare the dist, then my script will create a new folder named: "#SUNU_OS_dist"
 
 Now inside the #SUNU_OS_dist folder, you should be having :
-[Project_Name]\_assets folder
-,
-[Project_Name].html
-,
-[Project_Name].(your image format for logo)
-at the same level
+
+- [Project_Name]\_assets folder
+  ,
+- [Project_Name].html
+  ,
+- [Project_Name].(your image format for logo)
+  at the same level
 
 - Copy all these and paste into the public directory of my project.
   ([Project_Name.html] should be the direct child of "public/" directory)
