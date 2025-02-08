@@ -43,5 +43,10 @@
             "good_name": "Dhananjay",
             "url": "github.com/DJ5harma"
         }
+    },
+    {
+        "name": "Calculator",
+        "iframe": "/Calculator.html",
+        "icon": "https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Calculator-icon.png"
     }
 ]

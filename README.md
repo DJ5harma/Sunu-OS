@@ -1,4 +1,12 @@
-### Install your own app inside my system:
+# Install your own app inside my system:
+
+### If you have your app deployed somewhere
+
+make sure you haven't made it disallowed for iframe usage
+
+- just add your entry inside the /src/app_list.json file and you're done...
+
+### If you have static html,css,js files
 
 To install a static build of html, css and js: (skip this if you made your project using vite, I've made a script for you)
 
@@ -54,7 +62,7 @@ Now inside the #SUNU_OS_dist folder, you should be having :
 - Copy all these and paste into the public directory of my project.
   ([Project_Name.html] should be the direct child of "public/" directory)
 
-- Add your entry inside "the app_list.json" in my project.
+- Add your entry inside "the app_list.json" in my project at /src/app_list.json.
   That's it, your app has been installed ....
 
 (Please check out an already added project inside public to get the analogy if you face problems)

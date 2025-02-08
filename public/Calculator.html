@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        * {
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c36;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .calculator {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .calculator {
+            background: #ddd;
+            color: #000;
+        }
+
+        .display {
+            background: #000;
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .display {
+            background: #fff;
+            color: #000;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            background: #444;
+            color: white;
+            font-size: 1.5em;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #666;
+        }
+
+        .theme-toggle {
+            text-align: right;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: white;
+            padding-bottom: 10px;
+        }
+
+        .dark-mode .theme-toggle {
+            color: black;
+        }
+
+        .dark-mode {
+            background: #ddd;
+            color: #000;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const display = document.querySelector(".current-input");
+            const themeToggle = document.querySelector(".theme-toggle");
+            const body = document.body;
+            let input = "";
+
+            themeToggle.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+                themeToggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+            });
+
+            document.querySelectorAll(".btn").forEach(button => {
+                button.addEventListener("click", () => {
+                    const value = button.getAttribute("data-value");
+                    if (value === "C") {
+                        input = "";
+                    } else if (value === "DEL") {
+                        input = input.slice(0, -1);
+                    } else if (value === "=") {
+                        try {
+                            const result = eval(input);
+                            input = result;
+                        } catch {
+                            input = "Error";
+                        }
+                    } else {
+                        input += value;
+                    }
+                    display.textContent = input || "0";
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="calculator">
+            <div class="theme-toggle">🌙</div>
+            <div class="display">
+                <div class="current-input">0</div>
+            </div>
+            <div class="buttons">
+                <button class="btn function" data-value="C">C</button>
+                <button class="btn function" data-value="DEL">DEL</button>
+                <button class="btn function" data-value="%">%</button>
+                <button class="btn operator" data-value="/">÷</button>
+
+                <button class="btn number" data-value="7">7</button>
+                <button class="btn number" data-value="8">8</button>
+                <button class="btn number" data-value="9">9</button>
+                <button class="btn operator" data-value="*">×</button>
+
+                <button class="btn number" data-value="4">4</button>
+                <button class="btn number" data-value="5">5</button>
+                <button class="btn number" data-value="6">6</button>
+                <button class="btn operator" data-value="-">−</button>
+
+                <button class="btn number" data-value="1">1</button>
+                <button class="btn number" data-value="2">2</button>
+                <button class="btn number" data-value="3">3</button>
+                <button class="btn operator" data-value="+">+</button>
+
+                <button class="btn number" data-value="0">0</button>
+                <button class="btn number" data-value=".">.</button>
+                <button class="btn function" data-value="sqrt">√</button>
+                <button class="btn equals" data-value="=">=</button>
+
+                <button class="btn function" data-value="sin">sin</button>
+                <button class="btn function" data-value="cos">cos</button>
+                <button class="btn function" data-value="tan">tan</button>
+                <button class="btn function" data-value="log">log</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

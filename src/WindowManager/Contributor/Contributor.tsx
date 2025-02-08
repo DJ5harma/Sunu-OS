@@ -13,6 +13,8 @@ export default function Contributor({
 
 	const [isHovered, setIsHovered] = useState(false);
 
+	if (!contributor) return null;
+
 	return (
 		<>
 			<div className="cursor-pointer" onClick={() => setIsHovered((p) => !p)}>
