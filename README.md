@@ -4,7 +4,7 @@ I've made a build script:
 
 NOTE: It works according to how vite makes react distributables, so it may not work in other configurations
 
-- You have download/copy "build".
+- You have to copy "#BUILD_FOR_SUNU.cjs" inside your project's root.
 - Then just run :
 
 ```
