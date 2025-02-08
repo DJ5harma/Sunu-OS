@@ -1,6 +1,5 @@
-import app_list from "../../Apps/app_list.json";
-import extract_icon_url from "../utils/extract_icon_url";
 import { UseWindowManager } from "../WindowManager";
+import app_list from "../../app_list.json";
 
 export default function Desktop() {
 	const { loadComponent } = UseWindowManager();
@@ -20,7 +19,7 @@ export default function Desktop() {
 					"linear-gradient(to right, rgb(151, 19, 129), rgb(200,0,0))",
 			}}
 		>
-			{app_list.map(({ name }, i) => {
+			{app_list.map(({ name, icon }, i) => {
 				if (name.length > 15) name = name.slice(0, 15) + "...";
 				return (
 					<div
@@ -37,7 +36,7 @@ export default function Desktop() {
 						onDoubleClick={() => loadComponent(i)}
 						key={i}
 					>
-						<img src={extract_icon_url(i)} width={50} height={50} alt="" />
+						<img src={icon} width={50} height={50} alt="" />
 						<p
 							style={{
 								maxWidth: 70,

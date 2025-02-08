@@ -9,10 +9,9 @@ import {
 	WINDOW_TOPBAR_BUTTONS_WIDTH,
 	WINDOW_TOPBAR_HEIGHT,
 } from "../constants";
-import extract_icon_url from "../utils/extract_icon_url";
 
 import "./Window.css";
-import app_list from "../../Apps/app_list.json";
+import app_list from "../../app_list.json";
 
 export default function Window({
 	children,
@@ -70,7 +69,7 @@ export default function Window({
 				// 	: "rgb(255, 255, 255) solid 1px",
 				boxShadow: "0 0 3px 0.5px white",
 				zIndex: z_index,
-				borderRadius: 10,
+				borderRadius: in_fullscreen ? 0 : 10,
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "center",
@@ -103,7 +102,7 @@ export default function Window({
 					onDoubleClick={toggleFullscreen}
 				>
 					<img
-						src={extract_icon_url(myEntity.app_list_index)}
+						src={app_list[myEntity.app_list_index].icon}
 						alt=""
 						style={{
 							height: WINDOW_TOPBAR_HEIGHT - 4,
@@ -167,13 +166,8 @@ export default function Window({
 			<div
 				style={{
 					height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
-					backgroundColor: "black",
-					color: "white",
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-					position: "relative",
 				}}
+				className="w-full h-full [&>*]:w-full [&>*]:h-full"
 			>
 				{children}
 			</div>

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Draw Buddy",
+        "iframe": "/DrawBuddy.html",
+        "icon": "https://winaero.com/blog/wp-content/uploads/2021/04/mspaint-icon-big-256-fluent-new.png"
+    },
+    {
+        "name": "Web Games",
+        "iframe": "/WebGames.html",
+        "icon": "/WebGamesLogo.png"
+    }
+]

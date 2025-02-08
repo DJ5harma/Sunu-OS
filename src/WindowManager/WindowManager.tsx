@@ -3,7 +3,7 @@ import Window from "./Window/Window";
 import { TASKBAR_HEIGHT } from "./constants";
 import Taskbar from "./Taskbar/Taskbar";
 import Desktop from "./Desktop/Desktop";
-import app_list from "../Apps/app_list.json";
+import app_list from "../app_list.json";
 
 type EntityMap = {
 	[key: number]: {
@@ -44,19 +44,10 @@ export default function WindowManager() {
 	async function loadComponent(app_list_index: number) {
 		if (app_list_index >= app_list.length) return;
 
-		const path_from_app_list = app_list[app_list_index].main; // Get path_from_app_list from JSON
-		if (path_from_app_list) {
-			try {
-				const { default: LoadedComponent } = await import(
-					/* @vite-ignore */
-					"../Apps/" + path_from_app_list
-				);
-				addEntity(<LoadedComponent />, app_list_index);
-			} catch (error) {
-				console.error("Error loading component:", error);
-			}
-		} else {
-			console.error("Component not found for number:", app_list_index);
+		const project = app_list[app_list_index];
+
+		if (project.iframe) {
+			addEntity(<iframe src={project.iframe}></iframe>, app_list_index);
 		}
 	}
 

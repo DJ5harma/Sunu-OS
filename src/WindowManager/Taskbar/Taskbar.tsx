@@ -1,7 +1,7 @@
 import { MdLinearScale } from "react-icons/md";
 import { TASKBAR_HEIGHT } from "../constants";
-import extract_icon_url from "../utils/extract_icon_url";
 import { UseWindowManager } from "../WindowManager";
+import app_list from "../../app_list.json";
 
 export default function Taskbar() {
 	const { entities, minimizeEntitySwitch, pushEntityForward } =
@@ -51,7 +51,7 @@ export default function Taskbar() {
 						onClick={() => handleClick(i)}
 					>
 						<img
-							src={extract_icon_url(value.app_list_index)}
+							src={app_list[value.app_list_index].icon}
 							width={35}
 							height={35}
 							alt=""
