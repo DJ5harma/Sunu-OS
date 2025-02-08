@@ -6,15 +6,8 @@ export default function Desktop() {
 
 	return (
 		<div
+			className="w-full h-full flex flex-col flex-wrap"
 			style={{
-				// border: "black solid 2px",
-				width: "100%",
-				height: "100%",
-				padding: 0,
-				gap: 10,
-				display: "flex",
-				flexDirection: "column",
-				flexWrap: "wrap",
 				backgroundImage:
 					"linear-gradient(to right, rgb(151, 19, 129), rgb(200,0,0))",
 			}}
@@ -23,26 +16,14 @@ export default function Desktop() {
 				if (name.length > 15) name = name.slice(0, 15) + "...";
 				return (
 					<div
-						style={{
-							width: 100,
-							height: 100,
-							display: "flex",
-							flexDirection: "column",
-							alignItems: "center",
-							justifyContent: "center",
-							// flexWrap: "wrap",
-							// backgroundColor: "black",
-						}}
+						className="w-28 h-28 flex flex-col items-center justify-center"
 						onDoubleClick={() => loadComponent(i)}
 						key={i}
 					>
 						<img src={icon} width={50} height={50} alt="" />
 						<p
+							className="max-w-20 break-all text-sm text-center"
 							style={{
-								maxWidth: 70,
-								wordBreak: "break-all",
-								fontSize: 14,
-								textAlign: "center",
 								lineHeight: 1,
 								marginTop: 5,
 							}}

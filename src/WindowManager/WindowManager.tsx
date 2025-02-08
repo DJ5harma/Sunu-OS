@@ -99,20 +99,11 @@ export default function WindowManager() {
 				minimizeEntitySwitch,
 			}}
 		>
-			<div
-				style={{
-					color: "white",
-					backgroundColor: "#242424",
-				}}
-			>
+			<div className="text-white bg-neutral-800">
 				<div
+					className="w-full overflow-hidden"
 					style={{
-						width: `100vw`,
 						height: `calc(100vh - ${TASKBAR_HEIGHT}px)`,
-						top: 0,
-						left: 0,
-						// border: "solid green",
-						overflow: "hidden",
 					}}
 				>
 					<Desktop />

@@ -63,42 +63,24 @@ export default function Window({
 				height: window.innerHeight / 2,
 			}}
 			dragHandleClassName="drag-handler"
+			className="flex flex-col justify-center items-center"
 			style={{
-				// border: in_fullscreen
-				// 	? "1px yellow solid"
-				// 	: "rgb(255, 255, 255) solid 1px",
 				boxShadow: "0 0 3px 0.5px white",
 				zIndex: z_index,
 				borderRadius: in_fullscreen ? 0 : 10,
-				display: "flex",
-				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "center",
 			}}
 			onMouseDown={() => pushEntityForward(myKey)}
 			// disableDragging={in_fullscreen}
 			onResize={() => set_in_fullscreen(false)}
 		>
 			<nav
+				className="bg-black flex justify-between items-center select-none w-full"
 				style={{
-					background: "black",
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					userSelect: "none",
 					height: WINDOW_TOPBAR_HEIGHT,
-					width: "100%",
 				}}
 			>
 				<div
-					className="drag-handler"
-					style={{
-						width: "100%",
-						height: "100%",
-						display: "flex",
-						alignItems: "center",
-						gap: 6,
-					}}
+					className="drag-handler w-full h-full flex items-center gap-1.5"
 					onDoubleClick={toggleFullscreen}
 				>
 					<img
@@ -111,22 +93,11 @@ export default function Window({
 					/>
 					<p>{app_list[myEntity.app_list_index].name}</p>
 				</div>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						height: "100%",
-					}}
-				>
+				<div className="flex items-center h-full [&>div]:h-full [&>div]:flex [&>div]:items-center [&>div]:justify-center [&>div]:cursor-pointer">
 					<div
 						className="MinimizeButton"
 						style={{
-							height: "100%",
 							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							cursor: "pointer",
 						}}
 						onClick={() => minimizeEntitySwitch(myKey, true)}
 					>
@@ -135,27 +106,16 @@ export default function Window({
 					<div
 						className="FullscreenButton"
 						style={{
-							height: "100%",
 							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							cursor: "pointer",
 						}}
-						onClick={() => toggleFullscreen()}
+						onClick={toggleFullscreen}
 					>
 						<FiMaximize2 size={20} />
 					</div>
 					<div
 						className="CrossButton"
 						style={{
-							height: "100%",
 							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							cursor: "pointer",
-							// backgroundColor: "green",
 						}}
 						onClick={() => destroyEntity(myKey)}
 					>
@@ -164,10 +124,10 @@ export default function Window({
 				</div>
 			</nav>
 			<div
+				className="w-full h-full [&>*]:w-full [&>*]:h-full"
 				style={{
 					height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
 				}}
-				className="w-full h-full [&>*]:w-full [&>*]:h-full"
 			>
 				{children}
 			</div>

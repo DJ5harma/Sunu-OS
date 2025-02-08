@@ -22,13 +22,9 @@ export default function Taskbar() {
 
 	return (
 		<div
+			className="w-full flex gap-2.5 justify-center items-center"
 			style={{
 				height: TASKBAR_HEIGHT,
-				width: "100vw",
-				display: "flex",
-				gap: 10,
-				justifyContent: "center",
-				alignItems: "center",
 				backgroundImage:
 					"linear-gradient(to up, rgb(36, 29, 35), rgb(109, 109, 109))",
 			}}
@@ -37,16 +33,10 @@ export default function Taskbar() {
 				return (
 					<div
 						key={key}
+						className="flex flex-col items-center justify-center relative top-1 rounded-lg"
 						style={{
-							display: "flex",
-							flexDirection: "column",
-							alignItems: "center",
-							justifyContent: "center",
-							position: "relative",
-							top: 2,
 							backgroundColor: i === max_z_index_index ? "gray" : "black",
 							padding: "4px 6px",
-							borderRadius: 10,
 						}}
 						onClick={() => handleClick(i)}
 					>
@@ -55,9 +45,9 @@ export default function Taskbar() {
 							width={35}
 							height={35}
 							alt=""
-							style={{ position: "relative", top: 3 }}
+							className="relative top-0.5"
 						/>
-						<MdLinearScale style={{ position: "relative", bottom: 1 }} />
+						<MdLinearScale className="relative bottom-0.5" />
 					</div>
 				);
 			})}

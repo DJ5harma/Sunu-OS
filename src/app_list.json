@@ -2,16 +2,28 @@
     {
         "name": "Draw Buddy",
         "iframe": "/DrawBuddy.html",
-        "icon": "DrawBuddy.svg"
+        "icon": "https://miro.medium.com/v2/resize:fit:600/1*1P9wyUKrz9po7xpTsDFvTw.png",
+        "contributor": {
+            "good_name": "Dhananjay",
+            "github_username": "DJ5harma"
+        }
     },
     {
         "name": "Web Games",
         "iframe": "/WebGames.html",
-        "icon": "/WebGames.png"
+        "icon": "/WebGames.png",
+        "contributor": {
+            "good_name": "Dhananjay",
+            "github_username": "DJ5harma"
+        }
     },
     {
         "name": "boxOffice",
-        "iframe":"/boxOffice.html",
-        "icon":"https://logowik.com/content/uploads/images/boxoffice-pro3323.jpg"
+        "iframe": "/boxOffice.html",
+        "icon": "https://logowik.com/content/uploads/images/boxoffice-pro3323.jpg",
+        "contributor": {
+            "good_name": "Jaagrit",
+            "github_username": "JAAGRIT02"
+        }
     }
 ]
