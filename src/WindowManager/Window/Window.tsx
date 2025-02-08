@@ -12,6 +12,7 @@ import {
 
 import "./Window.css";
 import app_list from "../../app_list.json";
+import Contributor from "../Contributor/Contributor";
 
 export default function Window({
 	children,
@@ -52,85 +53,87 @@ export default function Window({
 
 		set_in_fullscreen(!in_fullscreen);
 	}
-
 	return (
-		<Rnd
-			ref={Rnd_Ref}
-			default={{
-				x: window.innerWidth / 4,
-				y: window.innerHeight / 4,
-				width: window.innerWidth / 2,
-				height: window.innerHeight / 2,
-			}}
-			dragHandleClassName="drag-handler"
-			className="flex flex-col justify-center items-center"
-			style={{
-				boxShadow: "0 0 3px 0.5px white",
-				zIndex: z_index,
-				borderRadius: in_fullscreen ? 0 : 10,
-			}}
-			onMouseDown={() => pushEntityForward(myKey)}
-			// disableDragging={in_fullscreen}
-			onResize={() => set_in_fullscreen(false)}
-		>
-			<nav
-				className="bg-black flex justify-between items-center select-none w-full"
-				style={{
-					height: WINDOW_TOPBAR_HEIGHT,
+		<>
+			<Rnd
+				ref={Rnd_Ref}
+				default={{
+					x: window.innerWidth / 4,
+					y: window.innerHeight / 4,
+					width: window.innerWidth / 2,
+					height: window.innerHeight / 2,
 				}}
+				dragHandleClassName="drag-handler"
+				className="flex flex-col justify-center items-center"
+				style={{
+					boxShadow: "0 0 3px 0.5px white",
+					zIndex: z_index,
+					borderRadius: in_fullscreen ? 0 : 10,
+				}}
+				onMouseDown={() => pushEntityForward(myKey)}
+				// disableDragging={in_fullscreen}
+				onResize={() => set_in_fullscreen(false)}
 			>
-				<div
-					className="drag-handler w-full h-full flex items-center gap-1.5"
-					onDoubleClick={toggleFullscreen}
+				<nav
+					className="bg-black flex justify-between items-center select-none w-full"
+					style={{
+						height: WINDOW_TOPBAR_HEIGHT,
+					}}
 				>
-					<img
-						src={app_list[myEntity.app_list_index].icon}
-						alt=""
-						style={{
-							height: WINDOW_TOPBAR_HEIGHT - 4,
-							padding: 4,
-						}}
-					/>
-					<p>{app_list[myEntity.app_list_index].name}</p>
+					<div
+						className="drag-handler w-full h-full flex items-center gap-1.5"
+						onDoubleClick={toggleFullscreen}
+					>
+						<img
+							src={app_list[myEntity.app_list_index].icon}
+							alt=""
+							style={{
+								height: WINDOW_TOPBAR_HEIGHT - 4,
+								padding: 4,
+							}}
+						/>
+						<p>{app_list[myEntity.app_list_index].name}</p>
+						<Contributor app_list_index={myEntity.app_list_index} />
+					</div>
+					<div className="flex items-center h-full [&>div]:h-full [&>div]:flex [&>div]:items-center [&>div]:justify-center [&>div]:cursor-pointer">
+						<div
+							className="MinimizeButton"
+							style={{
+								width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							}}
+							onClick={() => minimizeEntitySwitch(myKey, true)}
+						>
+							<VscChromeMinimize size={20} />
+						</div>
+						<div
+							className="FullscreenButton"
+							style={{
+								width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							}}
+							onClick={toggleFullscreen}
+						>
+							<FiMaximize2 size={20} />
+						</div>
+						<div
+							className="CrossButton"
+							style={{
+								width: WINDOW_TOPBAR_BUTTONS_WIDTH,
+							}}
+							onClick={() => destroyEntity(myKey)}
+						>
+							<RxCross2 size={20} />
+						</div>
+					</div>
+				</nav>
+				<div
+					className="w-full h-full [&>*]:w-full [&>*]:h-full"
+					style={{
+						height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
+					}}
+				>
+					{children}
 				</div>
-				<div className="flex items-center h-full [&>div]:h-full [&>div]:flex [&>div]:items-center [&>div]:justify-center [&>div]:cursor-pointer">
-					<div
-						className="MinimizeButton"
-						style={{
-							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-						}}
-						onClick={() => minimizeEntitySwitch(myKey, true)}
-					>
-						<VscChromeMinimize size={20} />
-					</div>
-					<div
-						className="FullscreenButton"
-						style={{
-							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-						}}
-						onClick={toggleFullscreen}
-					>
-						<FiMaximize2 size={20} />
-					</div>
-					<div
-						className="CrossButton"
-						style={{
-							width: WINDOW_TOPBAR_BUTTONS_WIDTH,
-						}}
-						onClick={() => destroyEntity(myKey)}
-					>
-						<RxCross2 size={20} />
-					</div>
-				</div>
-			</nav>
-			<div
-				className="w-full h-full [&>*]:w-full [&>*]:h-full"
-				style={{
-					height: `calc(100% - ${WINDOW_TOPBAR_HEIGHT}px)`,
-				}}
-			>
-				{children}
-			</div>
-		</Rnd>
+			</Rnd>
+		</>
 	);
 }

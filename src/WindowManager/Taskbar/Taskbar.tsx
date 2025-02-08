@@ -8,6 +8,10 @@ export default function Taskbar() {
 		UseWindowManager();
 
 	const renderable = Object.entries(entities);
+	if (renderable.length === 0)
+		return (
+			<p className="p-4 h-full text-center"> Double click to run an app</p>
+		);
 
 	let max_z_index_index = 0;
 	for (let i = 1; i < renderable.length; ++i)
